@@ -1,0 +1,64 @@
+<div class="register">
+  <h2 id="heading">Login Now</h2>
+  <hr />
+  <form
+    action=""
+    #f="ngForm"
+    novalidate
+    (ngSubmit)="f.form.valid && onSubmit()"
+  >
+    <label class="lab" for="email" name="email">EMAIL</label>
+    <input
+      class="inp"
+      type="email"
+      required
+      name="email"
+      [(ngModel)]="formdata.email"
+      #email="ngModel"
+    />
+    <p class="msg" *ngIf="this.submit && email.errors?.['required']  ">
+      Email is required
+    </p>
+    <label class="lab" for="pass">PASSWORD</label>
+    <input
+      class="inp"
+      type="password"
+      name="pass"
+      id="pass"
+      required
+      [(ngModel)]="formdata.password"
+      #password="ngModel"
+    />
+    <p class="msg" *ngIf="this.submit&&password.errors?.['required']">
+      Password is required
+    </p>
+    <p class="msg" *ngIf="this.errorMessage" [innerText]="this.errorMessage">
+      Custom Error Message
+    </p>
+    <div class="text-center spinner" *ngIf="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+    <div id="btn-container">
+      <button
+        class="btn btn-primary"
+        id="my-btn"
+        type="submit"
+        (click)="submit = true"
+        [disabled]="this.loading"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+  <p>
+    Create an new account? Please
+    <a
+      routerLink="/register"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Register</a
+    >
+  </p>
+</div>

@@ -1,0 +1,46 @@
+.register {
+  max-width: 70%;
+  background-color: aliceblue;
+  margin: auto auto;
+  padding: 1.5rem;
+  border: 1px solid blue;
+  border-radius: 5px;
+}
+
+.spinner {
+  margin: 3rem 0;
+}
+
+.lab {
+  display: block;
+  text-align: left;
+}
+
+.inp {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border-radius: 7px;
+  border: 1px solid gray;
+  transition: box-shadow 0.2s;
+}
+
+.inp:focus {
+  border-color: blue;
+  outline: none;
+  box-shadow: 0 0 15px dodgerblue;
+}
+
+#heading {
+  text-align: center;
+  color: blue;
+}
+.msg {
+  font-size: smaller;
+  color: red;
+}
+
+#btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}

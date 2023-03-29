@@ -1,0 +1,84 @@
+<div class="register">
+  <h2 id="heading">Register Now</h2>
+  <hr />
+  <form
+    action=""
+    #f="ngForm"
+    novalidate
+    (ngSubmit)="f.form.valid && onSubmit()"
+  >
+    <!-- Name -->
+    <label class="lab" for="name">NAME</label>
+    <input
+      class="inp"
+      type="text"
+      required
+      name="name"
+      [(ngModel)]="formdata.name"
+      #name="ngModel"
+    />
+    <p class="msg" *ngIf="this.submit && name.errors?.['required']">
+      Name is required
+    </p>
+    <!-- Email -->
+    <label class="lab" for="email" name="email">EMAIL</label>
+    <input
+      class="inp"
+      type="email"
+      required
+      name="email"
+      [(ngModel)]="formdata.email"
+      #email="ngModel"
+    />
+    <p class="msg" *ngIf="this.submit && email.errors?.['required']  ">
+      Email is required
+    </p>
+    <p class="msg" *ngIf="this.submit && email.errors?.['email']">
+      Invalid email
+    </p>
+    <!-- Password -->
+    <label class="lab" for="pass">PASSWORD</label>
+    <input
+      class="inp"
+      type="password"
+      name="pass"
+      id=""
+      required
+      [(ngModel)]="formdata.password"
+      #password="ngModel"
+      minlength="8"
+    />
+    <p class="msg" *ngIf="this.submit && password.errors?.['required']">
+      Password is required
+    </p>
+    <p class="msg" *ngIf="this.submit && password.errors?.['minlength']">
+      Minimum 8 characters
+    </p>
+    <p class="msg" *ngIf="this.errorMessage">Custom Error Message</p>
+    <div class="text-center spinner" *ngIf="loading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+    <div id="btn-container">
+      <button
+        class="btn btn-primary"
+        id="my-btn"
+        type="submit"
+        (click)="submit = true"
+        [disabled]="this.loading"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+  <p>
+    Already have an account? Please
+    <a
+      routerLink="/login"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Login</a
+    >
+  </p>
+</div>
